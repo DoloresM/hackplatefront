@@ -5,8 +5,9 @@ const Recipes = (props) => (
     <div>
       <div>
         {props.incomingRecipes.map((recipe) =>{
+          console.log(recipe.recipe_id)
           return (
-            <div key={recipe.id} style={{marginBottom: "2rem"}}>
+            <div key={recipe.recipe_id} style={{marginBottom: "2rem"}}>
               <div>
                   <img
                    src={recipe.image_url}
