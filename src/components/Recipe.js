@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 
-const GIFT = "99f57e78fd1dd74123926711e18a9901";
+const GIFT = process.env.REACT_APP_API_KEY
 
 class Recipe extends Component {
   state ={
@@ -18,6 +18,7 @@ class Recipe extends Component {
   }
 
   render(){
+
     const recipe = this.state.activeRecipe;
     return(
       <div>

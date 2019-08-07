@@ -3,7 +3,7 @@ import Form from "./components/Form";
 import './App.css';
 import Recipes from "./components/Recipes";
 
-const GIFT = "99f57e78fd1dd74123926711e18a9901";
+const GIFT = process.env.REACT_APP_API_KEY
 
 class App extends Component {
 
@@ -41,6 +41,7 @@ class App extends Component {
   }
 
   render(){
+    console.log(GIFT)
   return (
     <div className="App">
       <header className="App-header">
