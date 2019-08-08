@@ -1,33 +1,104 @@
-.App {
-  text-align: center;
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+nav{
+  padding: 20px;
+  background: red;
+  color: white;
+  height: 12vh;
+  margin-bottom: 15%;
+
+}
+
+nav ul {
+float: right;
+}
+
+nav ul li{
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 20px;
+  margin: 0 7px;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background: url("https://images.unsplash.com/photo-1524859880053-f595797051c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  margin-top: -23px;
+}
+
+
+.sub-header{
+  width: 40%;
+  height: 40vh;
+  margin: 0 auto;
+  background: rgba(169,169,169,.5);
+  padding-top: 20px;
+}
+
+h1{
+  font-size: 50px;
+}
+
+.main-content{
+  padding: 0 5%;
+  background: red;
+  height: 300px;
+  margin: 50px;
+}
+
+.section{
+  width: 50%;
+  display: inline-block;
+  float: left;
+}
+.section2{
+  width: 50%;
+  background-color: orange;
+  height: 100%;
+  display: inline-block;
+  float: right;
+}
+
+.form-box{
+  height:50px;
+  background: gray;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.orange{
+  background: orange;
+  text-align: center;
+  padding: 30px;
+}
+.recipe{
+margin-top: 10px;
+border: 1px solid black;
+padding: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.footer{
+height: 20px;
+background: black;
+color: white;
+}
+
+.recipe-box{
+  background: gray;
+  margin: 30px;
+  padding: 10px;
+}
+.recipe-image{
+  height: 400px;
+  width: 400px;
+  border-radius: 30px;
+
 }

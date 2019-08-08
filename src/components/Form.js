@@ -2,8 +2,8 @@ import React from "react";
 
 const Form = (props) => {
   return(
-    <form onSubmit={props.getRecipe} style={{marginBottom: "2rem"}}>
-      <input type="text" name="recipe"/>
+    <form  onSubmit={props.getRecipe} style={{marginBottom: "2rem"}}>
+      <input className= "form-box" type="text" name="recipe"/>
       <button>Search</button>
     </form>
   )
