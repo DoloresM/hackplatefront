@@ -16,21 +16,7 @@ class App extends Component {
   }
 
 
-  // componentDidMount = ()=> {
-  //   {/*retrive the items searched from localStorage once its set/saved*/}
-  //   const json = localStorage.getItem("recipes");
-  //   {/*return the data back to JSON format*/}
-  //   const recipes = JSON.parse(json);
-  //   this.setState({recipes:recipes});
-  //
-  // }
-  //
-  // componentDidUpdate = () =>{
-  //   {/*turn the JSON data into a  sting*/}
-  //   const recipes = JSON.stringify(this.state.recipes);
-  //   {/*Assign this data to localStorge by passing in a name for it and then passing in the data*/}
-  //   localStorage.setItem("recipes", recipes);
-  // }
+
 
 
     render(){
