@@ -5,32 +5,50 @@ html {
   box-sizing: inherit;
 }
 
-nav{
-  padding: 20px;
-  background: red;
+#logo{
+  display: inline-block;
+  float:left;
+  font-size: 40px;
+  padding: 6px 14px 0 14px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background: rgba(255,127,80,.8);
   color: white;
-  height: 12vh;
-  margin-bottom: 15%;
+  border-radius: 10px;
+  margin-top: .03px;
+}
+
+
+
+nav{
+
+position: absolute;
+top:0px;
+width:100%;
+background:transparent;
+height: 10vh;
+padding: 1% 4%;
+
 
 }
 
-nav ul {
+ul {
 float: right;
+display: inline-block;
 }
 
-nav ul li{
+.nav-list{
   display: inline-block;
   vertical-align: middle;
-  font-size: 20px;
+  font-size: 15px;
   margin: 0 7px;
+  color: whitesmoke;
+  border: 1px solid white;
+  padding: 7px;
 }
 
+
+
 .App-header {
-  background: url("https://images.unsplash.com/photo-1524859880053-f595797051c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
   height: 100vh;
   margin-top: -23px;
 }

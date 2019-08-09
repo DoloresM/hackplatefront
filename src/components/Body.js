@@ -3,7 +3,7 @@ import React from "react";
 
 const Body = (props) => {
   return(
-    <div id="content-body">
+    <div >
       <div className="main-content">
         <div className="section">
           <h2>Why: Prioritize Health</h2>
@@ -44,7 +44,7 @@ const Body = (props) => {
       </div>
       <div className="main-content">
         <div className="section">
-          <h2>How: to Hack</h2>
+          <h2>The Perks</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
            Interdum velit laoreet id donec. Eget nullam non nisi est sit amet facilisis.
@@ -52,9 +52,9 @@ const Body = (props) => {
           Fusce ut placerat orci nulla.</p>
           <h3>Benefits</h3>
           <ul>
-            <li>replace ingredients</li>
-            <li>satisfy cravings</li>
-            <li>get saucy</li>
+            <li>Natual Increase in Energy</li>
+            <li>Reducing Carbon Footprint </li>
+            <li>Exposure to new and different foods</li>
           </ul>
         </div>
         <div className="section2">

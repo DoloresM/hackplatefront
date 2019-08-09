@@ -1,16 +1,20 @@
 import React, {Component} from "react";
 import Recipes from "./Recipes";
 import Form from "./Form";
+import YTSearch from "youtube-api-search";
 
-const GIFT = process.env.REACT_APP_API_KEY
+const GIFT = process.env.REACT_APP_API_KEY;
+const YT = process.env.REACT_APP_YT_API_KEY;
 
 class Search extends Component{
   constructor(){
     super()
     this.state = {
-      recipes:null 
+      recipes:null
     }
   }
+
+
 
   getRecipe = async (e) => {
     e.preventDefault();
@@ -25,7 +29,7 @@ class Search extends Component{
 
   render(){
       if(this.state.recipes){
-        console.log (this.state.recipes)
+        console.log ("here is your search" ,this.state.recipes)
         return(
           <div>
           <Form/>
