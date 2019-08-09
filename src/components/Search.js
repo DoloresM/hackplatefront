@@ -53,7 +53,7 @@ class Search extends Component{
                   <div className="sub-header">
                   <p className="search-heading">Hack your plate with <br/> a simple search</p>.
                   </div>
-                  <Form style={{"marginBottom":"50px"}}  getRecipe={this.getRecipe}/>
+                  <Form  getRecipe={this.getRecipe}/>
                   <Footer/>
                 </div>
               )
