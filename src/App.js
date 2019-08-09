@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Form from "./components/Form";
 import Footer from "./components/Footer";
 import Body from "./components/Body";
+import Nav from "./components/Nav";
 import {Link} from "react-router-dom";
 
 import './App.css';
@@ -17,29 +18,20 @@ class App extends Component {
   }
 
 
-
-
-
     render(){
       return (
         <div className="App">
           <header className="App-header">
-            <video src="https://gcs-vimeo.akamaized.net/exp=1565342542~acl=%2A%2F448954663.mp4%2A~hmac=e510e8e5a55f6ddbb24e4d76c7912ac753d39ccb1a0ab3eeaa9066ad6bac90fa/vimeo-prod-skyfire-std-us/01/4565/5/147827932/448954663.mp4" type="vidoe/mp4" poster =""
+            <video src="https://storage.coverr.co/videos/coverr-philippines-spices-1559212666899?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjExNDMyN0NEOTRCMUFCMTFERTE3IiwiaWF0IjoxNTY1MzQ0ODE5LCJleHAiOjE1NjUzNDg0MTl9.iC8X_4Sjw7xaGSpAq_Uw_Dv2hlM0z4bjjH1bPGmF_24"
+             poster ="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
                 style={{
                   objectFit: 'cover',
                   width: '100%',
                   height: '100vh',
                 }} loop autoplay="true"
             />
-            <nav>
-              <p id="logo">#HackMyPlate</p>
-              <ul>
-                <li className="nav-list"><Link style={{"color":"white", "textDecorationLine":"none"}} to="#content-body">About</Link></li>
-                <li className="nav-list"><Link style={{"color":"white", "textDecorationLine":"none"}} to="#content-body">Why Hack</Link></li>
-                <li className="nav-list"><Link  style={{"color":"white", "textDecorationLine":"none"}}to="/recipes">Search</Link></li>
-              </ul>
-            </nav>
 
+            <Nav/>
           </header>
 
           <Body id="content-body"/>

@@ -18,7 +18,6 @@ class Router extends Component {
         <Switch>
           <Route path="/" component={App} exact/>
           <Route path="/recipes" component={Search}/>
-          <Route path="#content-body" component={Body}/>
           <Route path="/recipe/:id" component={Recipe}/>
         </Switch>
       </BrowserRouter>

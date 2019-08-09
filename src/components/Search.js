@@ -1,10 +1,13 @@
 import React, {Component} from "react";
 import Recipes from "./Recipes";
 import Form from "./Form";
-import YTSearch from "youtube-api-search";
+import Footer from "./Footer";
+import Nav from "./Nav";
+import {Link} from "react-router-dom";
+
 
 const GIFT = process.env.REACT_APP_API_KEY;
-const YT = process.env.REACT_APP_YT_API_KEY;
+
 
 class Search extends Component{
   constructor(){
@@ -32,23 +35,31 @@ class Search extends Component{
         console.log ("here is your search" ,this.state.recipes)
         return(
           <div>
-          <Form/>
-          <Recipes incomingRecipes={this.state.recipes}/>
+          <Nav/>
+            <div className="sub-header">
+              <p className="search-heading">Hack your plate with <br/>a simple search</p>
+                .
+            </div>
+            <Form getRecipe={this.getRecipe}/>
+            <Recipes incomingRecipes={this.state.recipes}/>
+            <Footer/>
           </div>
         )
       } else {
         console.log("no recipes?");
             return(
                 <div>
-                <div className="sub-header">
-                  <h1 style={{"textAlign": "center"}}>Hack My Plate</h1>
-                </div>
-                <Form getRecipe={this.getRecipe}/>
+                <Nav/>
+                  <div className="sub-header">
+                  <p className="search-heading">Hack your plate with <br/> a simple search</p>.
+                  </div>
+                  <Form style={{"marginBottom":"50px"}}  getRecipe={this.getRecipe}/>
+                  <Footer/>
                 </div>
               )
-      }
-    }
-}
+            }
+          }
+        }
 
 
 export default Search;

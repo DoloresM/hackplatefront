@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import Nav from "./Nav";
 import {Link} from "react-router-dom";
 
 
@@ -24,24 +25,28 @@ console.log("yes")
     const recipe = this.state.activeRecipe;
 
     if(!this.state.activeRecipe.length){
-
+      console.log(recipe.ingredients);
       return(
-      <div>
-          <div className = "orange">
-          <div className="recipe">
-            <img className="recipe-image" src={recipe.image_url} alt={recipe.title}/>
-            <h3>{recipe.title}</h3>
-            <h4>
-              Publisher: <span>{recipe.publisher} </span>
-            </h4>
-            <p>Website:
-              <span><a href={recipe.source_url}>{recipe.source_url}</a></span>
-            </p>
-            <p>{recipe.ingredients}</p>
 
+      <div>
+      <Nav/>
+
+          <div className = "container">
+          <div className="recipe">
+            <img style={{"display" : "inline-box"}} className="recipe-image" src={recipe.image_url} alt={recipe.title}/>
+            <div id="recipe-desc" >
+            <h2>{recipe.title}</h2>
+            <h3>
+              Publisher: <span>{recipe.publisher} </span>
+            </h3>
+            <h2>Website:
+              <span><a href={recipe.source_url}>{recipe.source_url}</a></span>
+            </h2>
+            <p>{recipe.ingredient}</p>
             <button>
               <Link to="/">Go Home </Link>
             </button>
+            </div>
             </div>
           </div>
         </div>
