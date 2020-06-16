@@ -21,7 +21,7 @@ const Body = (props) => {
       </div>
       <div className="main-content">
         <div className="section">
-          <h2 className="benefits">How: to Hack</h2>
+          <h2 className="benefits">How: Start Hacking</h2>
           <p>Incorporating a vegan diet  simply starts with considering ways to trade animal products with fruites, nuts, and vegitables.There are many creative ways
           to eat meals you are familiar with, with a twist!
            </p>
