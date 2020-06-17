@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Body from "./components/Body";
 import Nav from "./components/Nav";
 import {Link} from "react-router-dom";
+import BackgroundVideo from "./components/Backgroundvideo/BackgroundVideo";
 
 import './App.css';
 
@@ -23,6 +24,7 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <Nav/>
+            <BackgroundVideo/>
           </header>
 
           <Body id="content-body"/>
