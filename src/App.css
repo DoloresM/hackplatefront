@@ -28,6 +28,12 @@ height: 10vh;
 padding: 1% 4%;
 }
 
+#heading{
+  position: absolute;
+  top: 100px;
+  background: transparent;
+}
+
 ul {
 float: right;
 display: inline-block;
