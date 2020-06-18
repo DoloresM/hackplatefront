@@ -1,10 +1,12 @@
 import React, {Component} from "react";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
-
 import App from "../App";
-import Recipe from "./Recipe"
-import Search from "./Search";
 import Body from "./Body";
+import VideoSearch from "./YouTube";
+import Guide from "./Guide";
+import Blog from "./Blog";
+import Purchase from "./Purchase";
+
 
 class Router extends Component {
   constructor(){
@@ -17,8 +19,10 @@ class Router extends Component {
       <BrowserRouter>
         <Switch>
           <Route path="/" component={App} exact/>
-          <Route path="/recipes" component={Search}/>
-          <Route path="/recipe/:id" component={Recipe}/>
+          <Route path="/search" component={VideoSearch}/>
+          <Route path="/guide" component={Guide}/>
+          <Route path="/blog" component={Blog}/>
+          <Route path="/purchase" component={Purchase}/>
         </Switch>
       </BrowserRouter>
     )
