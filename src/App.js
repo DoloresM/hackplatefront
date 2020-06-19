@@ -10,7 +10,7 @@ import Heading from "./components/Heading"
 import './App.css';
 
 
-
+const GIFT = process.env.REACT_APP_API_KEY;
 
 class App extends Component {
 
@@ -19,13 +19,15 @@ class App extends Component {
 
   }
 
+  
+    console.log()
 
     render(){
       return (
         <div className="App">
-          <header className="App-header">
-        
-            <Heading/>
+          <header className="sub-header">
+          <Nav/>
+          <Heading/>
           </header>
           <Body id="content-body"/>
           <Footer/>

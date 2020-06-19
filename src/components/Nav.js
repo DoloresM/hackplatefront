@@ -20,5 +20,10 @@ export default function Nav(props){
 
 
 const NavWrapper = styled.nav`
-background: black;
+position: fixed;
+top:0px;
+width:100%;
+background:transparent;
+height: 10vh;
+padding: 1% 4%;
 `
