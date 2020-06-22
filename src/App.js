@@ -19,8 +19,21 @@ class App extends Component {
 
   }
 
-  
-    console.log()
+  componentDidMount(){
+    this.videos = this.getVideo();
+  }
+
+  getVideo = async ()=>{
+     const gift_call = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=7lCDEYXw3mM&key=${GIFT}
+     &fields=items(id,snippet(channelId,title,categoryId),statistics)&part=snippet,statistics`)
+      const result = await gift_call.json
+      console.log(result)
+   }
+
+
+
+
+
 
     render(){
       return (
