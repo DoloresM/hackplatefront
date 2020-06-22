@@ -37,6 +37,7 @@ class Search extends Component{
           <div>
           <Nav/>
             <div className="sub-header">
+            <h1>New Updates Coming Soon . . . </h1>
               <p className="search-heading">Hack your plate with <br/>a simple search</p>
                 .
             </div>
