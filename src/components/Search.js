@@ -51,11 +51,9 @@ class Search extends Component{
             return(
                 <div>
                 <Nav/>
-                  <div className="sub-header">
-                  <p className="search-heading">Hack your plate with <br/> a simple search</p>.
+                  <div class="construction">
+                    COMING SOON . . .
                   </div>
-                  <Form  getRecipe={this.getRecipe}/>
-                  <Footer/>
                 </div>
               )
             }

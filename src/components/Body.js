@@ -1,10 +1,13 @@
 
 import React from "react";
+import styled from "styled-components";
 
 
 const Body = (props) => {
   return(
-    <div >
+    <BodyWrapper>
+    <div>
+
       <div className="main-content">
         <div className="section">
           <h2 className="benefits">Why: Prioritize Health</h2>
@@ -53,10 +56,12 @@ const Body = (props) => {
         </div>
       </div>
     </div>
+    </BodyWrapper>
+
 
   )
 }
-
-
-
 export default Body;
+
+const BodyWrapper = styled.div `
+`

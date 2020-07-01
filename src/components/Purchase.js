@@ -5,8 +5,8 @@ import styled from "styled-components"
 export default function Purchase (){
   return(
     <PurchaseWrapper>
-    <div>
     <Nav/>
+    <div class="construction">
     </div>
     </PurchaseWrapper>
   )

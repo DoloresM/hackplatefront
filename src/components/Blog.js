@@ -6,8 +6,8 @@ import styled from "styled-components"
 export default function Blog (){
   return(
     <BlogWrapper>
-    <div>
     <Nav/>
+    <div class="construction">
     </div>
     </BlogWrapper>
   )

@@ -6,7 +6,7 @@ import styled from "styled-components";
 export default function Nav(props){
   return(
     <NavWrapper>
-      <p id="logo"><Link style={{"color":"white" ,"textDecorationLine":"none"}} to="/">#HackMyPlate</Link ></p>
+      <p id="logo"><Link style={{"color":"white" ,"textDecorationLine":"none"}} to="/"><span>#HackMyPlate</span></Link ></p>
       <ul>
         <li className="nav-list"><Link  style={{"color":"orange", "textDecorationLine":"none", "padding": "30px"}}to="/search">Search Recipes</Link></li>
         <li className="nav-list"><Link  style={{"color":"orange", "textDecorationLine":"none", "padding": "30px"}}to="/guide">Guide</Link></li>
@@ -20,10 +20,8 @@ export default function Nav(props){
 
 
 const NavWrapper = styled.nav`
-position: fixed;
-top:0px;
 width:100%;
-background:transparent;
 height: 10vh;
 padding: 1% 4%;
+
 `
