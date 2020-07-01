@@ -21,12 +21,12 @@ export default class Guide extends Component {
     e.preventDefault()
   }
   handleChange = (event) =>{
-
     const l = event.target.value;
     let join = this.state.ingredients.concat(l)
     this.setState({
       ingredients: join
     })
+    console.log(event)
 
 
   }
