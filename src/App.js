@@ -7,7 +7,7 @@ import Nav from "./components/Nav";
 import {Link} from "react-router-dom";
 import Heading from "./components/Heading";
 import './App.css';
-import Header from "./components/Header";
+
 
 
 const GIFT = process.env.REACT_APP_API_KEY;

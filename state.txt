@@ -1,0 +1,5 @@
+App:
+-state:  user,
+-app > mealSearch: ingredientsList, select items, query results,
+-mealSearch > mealSearchResults: 
+-mealSearchResults > mealSearchResultItem

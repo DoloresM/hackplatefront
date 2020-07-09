@@ -4,6 +4,9 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+#plate{
+  color: white;
+}
 
 #logo{
   display: inline-block;
@@ -209,4 +212,10 @@ color: white;
 }
 .description{
   display: inline-block;
+}
+form section{
+  display: inline-block;
+  width: 12%;
+  background: #fcba03;
+  margin: 1%;
 }

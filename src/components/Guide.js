@@ -11,15 +11,11 @@ export default class Guide extends Component {
   constructor(props){
     super(props)
     this.state = {
+      item:"",
       ingredients: []
-
     }
   }
-
-
-  buttonClick = (e)=>{
-    e.preventDefault()
-  }
+  /* THIS IS PRE 'item' state inclustion
   handleChange = (event) =>{
     const l = event.target.value;
     let join = this.state.ingredients.concat(l)
@@ -27,22 +23,48 @@ export default class Guide extends Component {
       ingredients: join
     })
     console.log(event)
+  }*/
 
+  addItem = (event)=>{
+    const item = event.target.value;
+    if(event.target.checked){
+      this.setState((state)=>{
+        const ingredients = this.state.ingredients.concat(item);
+        return{
+          ingredients,
+          item: " "
+        };
+      });
+    }else{
+      this.setState((state)=>{
+        const ingredients = this.state.ingredients.filter((index)=>{
+          console.log(index);
+          return index !=item;
+        })
+        return{
+          ingredients
+        }
+      })
+    }
+  };
+
+  removeItem = (event) =>{
+    if(!event.target.checked){
+    console.log(event.target.value);
+
+      console.log(`here is ${this.state.ingredients}`)
+    }
 
   }
 
   handleSubmit = (e)=>{
-    e.preventDefault();
-    if(this.state.ingredients.length > 1){
-      this.state.ingredients.map(item =>(<li key={item}>{item}</li>))
-    }
-
-
+    console.log(this.state)
+  }
+  buttonClick = ()=>{
+    alert(`${this.state.ingredients},${this.state.ingredients.length}`)
   }
 
-
   render () {
-      console.log(this.state.ingredients)
 
     return(
       <GuideWrapper>
@@ -53,8 +75,8 @@ export default class Guide extends Component {
               <h1>Create Your Plate</h1>
             </div>
           </div>
-          <Form  buttonClick={this.buttonClick} handleChange={this.handleChange}/>
-          <Plate ingredients={this.ingredients} handleSubmit={this.handleSubmit}/>
+          <Form  buttonClick={this.buttonClick} addItem={this.addItem} handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
+          <Plate ingredients={this.state.ingredients} />
           <Footer/>
 
       </GuideWrapper>

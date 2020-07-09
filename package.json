@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "final-form": "^4.20.1",
+    "final-form-focus": "^1.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-final-form": "^6.5.0",
+    "react-final-form-html5-validation": "^1.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
     "react-video-cover": "^1.2.2",

@@ -1,10 +1,10 @@
 import React, {Component} from "react";
+import Nav from "./Nav";
 import Recipes from "./Recipes";
 import Form from "./Form";
-import Footer from "./Footer";
-import Nav from "./Nav";
+import Forming from "./nForm"
 import {Link} from "react-router-dom";
-
+import Footer from "./Footer";
 
 const GIFT = process.env.REACT_APP_API_KEY;
 
@@ -48,12 +48,16 @@ class Search extends Component{
         )
       } else {
         console.log("no recipes?");
+
             return(
                 <div>
                 <Nav/>
                   <div class="construction">
                     COMING SOON . . .
                   </div>
+                  <h1>Hello Search</h1>
+                  <Forming/>
+
                 </div>
               )
             }
