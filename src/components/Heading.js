@@ -1,9 +1,6 @@
 import React from "react";
-
-
 const Heading = ()=>{
   return(
-
     <div id="heading">
       <div class="headline">
         <h1>The Plant Based Guide</h1>
@@ -11,7 +8,6 @@ const Heading = ()=>{
         <h3>Enhance it!</h3>
       </div>
     </div>
-
   )
 }
 export default Heading

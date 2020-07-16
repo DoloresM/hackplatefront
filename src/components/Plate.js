@@ -1,16 +1,10 @@
-import {React,Component} from "react";
-import MealConsumer from "../context";
+import React from "react";
 
-export default class Plate extends Component{
-  render(){
-    const {} = this.props.product;
-    return(
-        <div>
-          <h3>Meal Suggestions</h3>
-
-        </div>
-    )
-
-  }
-
+const Plate = ()=>{
+  return(
+    <div>
+    hello
+    </div>
+  )
 }
+export default Plate;

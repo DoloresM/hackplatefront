@@ -1,25 +1,13 @@
 import React, {Component} from "react";
 import Nav from "./Nav";
-import Recipes from "./Recipes";
-import Form from "./Form";
 import Forming from "./nForm"
 import {Link} from "react-router-dom";
 import Footer from "./Footer";
 
 const GIFT = process.env.REACT_APP_API_KEY;
 
-
-class Search extends Component{
-  constructor(){
-    super()
-    this.state = {
-      recipes:null
-    }
-  }
-
-
-
-  getRecipe = async (e) => {
+const Search = ()=>{
+const  getRecipe = async (e) => {
     e.preventDefault();
     const recipe = `vegan ${e.target.elements.recipe.value}`;
     const gift_call = await fetch
@@ -30,19 +18,17 @@ class Search extends Component{
     console.log(this.state.recipes);
   }
 
-  render(){
+
       if(this.state.recipes){
-        console.log ("here is your search" ,this.state.recipes)
-        return(
+          console.log ("here is your search" ,this.state.recipes)
+          return(
           <div>
-          <Nav/>
+            <Nav/>
             <div className="sub-header">
-            <h1>New Updates Coming Soon . . . </h1>
-              <p className="search-heading">Hack your plate with <br/>a simple search</p>
-                .
+              <h1>New Updates Coming Soon . . . </h1>
+              <p className="search-heading">Hack your plate with <br/>a simple search.</p>
             </div>
-            <Form getRecipe={this.getRecipe}/>
-            <Recipes incomingRecipes={this.state.recipes}/>
+
             <Footer/>
           </div>
         )
@@ -62,7 +48,9 @@ class Search extends Component{
               )
             }
           }
-        }
+
+
+
 
 
 export default Search;

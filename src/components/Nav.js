@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import styled from "styled-components";
 
 
-export default function Nav(props){
+const Nav = ()=>{
   return(
     <NavWrapper>
       <p id="logo"><Link style={{"color":"white" ,"textDecorationLine":"none"}} to="/"><span>#HackMyPlate</span></Link ></p>
@@ -16,6 +16,7 @@ export default function Nav(props){
     </NavWrapper>
   )
 }
+export default Nav;
 
 
 
