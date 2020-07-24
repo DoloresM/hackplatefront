@@ -24,5 +24,4 @@ const NavWrapper = styled.nav`
 width:100%;
 height: 10vh;
 padding: 1% 4%;
-
 `

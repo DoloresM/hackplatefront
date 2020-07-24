@@ -1,52 +1,58 @@
-import React, {Component} from "react";
+
+import React, {useState} from "react";
 import {Form, FormSpy} from "react-final-form";
 import {Field} from "react-final-form-html5-validation";
 import createDecorator from "final-form-focus";
 import {MealConsumer} from "../context";
 
 
-
-export default class Forming extends Component {
-  constructor(props){
-    super(props)
-    this.state={}
+const Forming = ()=>{
+  const [selectedItems, setItems] = useState([]);
+  const focusOnError = createDecorator();
+  const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+  const showResults = async values => {
+        await this.sleep(300)
+        window.alert(JSON.stringify(values, 0, 2))
+        console.log(values)
+        {/*this.setstate should run to set the state of the selected ingredientds by passing selection array*/}
+      };
+  {/*this "required function is pass down on the field where the form needs to validate a value"*/}
+  const required = value => (value ? undefined : 'Required');
+  {/*addItem function needs to extract value of input and hold it in an array while its checked property is true
+    --if put as a property on input it will activate everytime the form is rendered*/}
+  const addItem = (valObject)=>{
+    let list = [];
+    for(const property in valObject){
+      valObject[property] == true? list=[...list,property]: console.log("no")
+    }
+    console.log(list);
+    return list;
   }
 
-focusOnError = createDecorator()
-
-sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
-
- showResults = async values => {
-    await this.sleep(300)
-    window.alert(JSON.stringify(values, 0, 2))
-    console.log(values)
-  }
-
-
-required = value => (value ? undefined : 'Required')
-
-  render(){
     return(
       <div>
         <h1>Making Meals</h1>
-        <Form onSubmit ={this.showResults}
-          subscripttion={{
-            submitting:true,
-          }}
-        >
+        {/*FormSpy needed to keep track/ read form state w/o rerendering the entire form*/}
+        <Form onSubmit ={showResults} subscripttion={{submitting:true}}>
+        {/*RENDER PROPR(implicitly calling the rendering of the form ) - child component being passed down by way of function, which is given
+          "formstate", handleSubmit (which is desinged to be given to the html object) */}
+          {/*below the handleSubmit methods along with the form state is deconstructed and being passed */}
           {({handleSubmit, submitting, values}) => (
             <form onSubmit ={handleSubmit}>
               <section className="grains">
-                <Field name="quinoa" component="select" placeholder="username" type="checkbox" >
+                <Field name="quinoa" component="select" placeholder="username" type="checkbox" validate ={required}>
+                  {/*below the field state is deconstructed and being passed */}
                   {({input, meta, placeholder}) => (
                     <div className={meta.active ? "active" : ""}>
-                      <label>Quinoa </label>
+                    {console.log(input)}
+                    <label>Quinoa</label>
+                      {/*Connecting event loops to input: below input property is further deconstructed: which include event hooks: onBlur, onFocus, onChange etc.*/}
                       <input {...input} placeholder={placeholder}/>
                       {meta.error && meta.touched && <span>{meta.error}</span>}
                     </div>
                   )}
                 </Field>
-                <Field name="rice" component="input" placeholder="username" type="checkbox">
+                <Field name="rice" component="select" placeholder="username" type="checkbox">
                   {({input, meta, placeholder}) => (
                     <div className={meta.active ? "active" : ""}>
                       <label>Rice</label>
@@ -213,7 +219,9 @@ required = value => (value ? undefined : 'Required')
 
               <button type="submit" disable={submitting}>Submit</button>
               <FormSpy subscription={{values:true}}>
-                {({values}) =><prev>{JSON.stringify(values, undefined, 2)}</prev>}
+                {({values}) =>
+                  <prev>{JSON.stringify(values, undefined, 2)}{addItem(values)}</prev>
+                }
               </FormSpy>
             </form>
           )}
@@ -223,7 +231,8 @@ required = value => (value ? undefined : 'Required')
         </div>
       </div>
     )
-  }
+
 }
 
 export const selection = ["quinoa","apple","carrots","avacado"]
+export default Forming;
