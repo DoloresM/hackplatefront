@@ -121,6 +121,14 @@ h1{
   height: 70vh;
   background-color: gray;
 }
+form{
+  background: black;
+}
+form h3{
+  color: white;
+  font-size: 24px;
+  padding-left: 5%;
+}
 #form{
 margin: 50px auto;
 padding: 1rem;

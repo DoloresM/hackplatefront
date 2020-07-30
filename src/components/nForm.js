@@ -1,238 +1,156 @@
+import React from "react";
+import { createForm } from 'final-form';
+import { Form, Field } from "react-final-form";
+import {meals} from "../data";
+{/*import {Form, FormSpy} from "react-final-form"*/}
+{/*import {Field} from "react-final-form-html5-validation";*/}
+{/*import createDecorator from "final-form-focus";*/}
 
-import React, {useState} from "react";
-import {Form, FormSpy} from "react-final-form";
-import {Field} from "react-final-form-html5-validation";
-import createDecorator from "final-form-focus";
-import {MealConsumer} from "../context";
 
-
-const Forming = ()=>{
-  const [selectedItems, setItems] = useState([]);
-  const focusOnError = createDecorator();
-  const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-  const showResults = async values => {
-        await this.sleep(300)
-        window.alert(JSON.stringify(values, 0, 2))
-        console.log(values)
-        {/*this.setstate should run to set the state of the selected ingredientds by passing selection array*/}
-      };
-  {/*this "required function is pass down on the field where the form needs to validate a value"*/}
-  const required = value => (value ? undefined : 'Required');
-  {/*addItem function needs to extract value of input and hold it in an array while its checked property is true
-    --if put as a property on input it will activate everytime the form is rendered*/}
-  const addItem = (valObject)=>{
-    let list = [];
-    for(const property in valObject){
-      valObject[property] == true? list=[...list,property]: console.log("no")
-    }
-    console.log(list);
-    return list;
-  }
-
-    return(
+class FieldComponents extends React.Component {
+  render(){
+    return (
       <div>
-        <h1>Making Meals</h1>
-        {/*FormSpy needed to keep track/ read form state w/o rerendering the entire form*/}
-        <Form onSubmit ={showResults} subscripttion={{submitting:true}}>
-        {/*RENDER PROPR(implicitly calling the rendering of the form ) - child component being passed down by way of function, which is given
-          "formstate", handleSubmit (which is desinged to be given to the html object) */}
-          {/*below the handleSubmit methods along with the form state is deconstructed and being passed */}
-          {({handleSubmit, submitting, values}) => (
-            <form onSubmit ={handleSubmit}>
-              <section className="grains">
-                <Field name="quinoa" component="select" placeholder="username" type="checkbox" validate ={required}>
-                  {/*below the field state is deconstructed and being passed */}
-                  {({input, meta, placeholder}) => (
-                    <div className={meta.active ? "active" : ""}>
-                    {console.log(input)}
-                    <label>Quinoa</label>
-                      {/*Connecting event loops to input: below input property is further deconstructed: which include event hooks: onBlur, onFocus, onChange etc.*/}
-                      <input {...input} placeholder={placeholder}/>
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-                <Field name="rice" component="select" placeholder="username" type="checkbox">
-                  {({input, meta, placeholder}) => (
-                    <div className={meta.active ? "active" : ""}>
-                      <label>Rice</label>
-                      <input {...input} placeholder={placeholder} />
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-                <Field name="bread" component="select" placeholder="username" type="checkbox">
-                  {({input, meta, placeholder}) => (
-                    <div className={meta.active ? "active" : ""}>
-                      <label>Bread </label>
-                      <input {...input} placeholder={placeholder}/>
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-              </section>
-              <section className="proteins">
-                <Field name="legumes" component="select" placeholder="username" type="checkbox" >
-                  {({input, meta, placeholder}) => (
-                    <div className={meta.active ? "active" : ""}>
-                      <label>Legumes </label>
-                      <input {...input} placeholder={placeholder}/>
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-                <Field name="seeds" component="input" placeholder="username" type="checkbox">
-                  {({input, meta, placeholder}) => (
-                    <div className={meta.active ? "active" : ""}>
-                      <label>Seeds </label>
-                      <input {...input} placeholder={placeholder} />
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-                <Field name="nuts" component="select" placeholder="username" type="checkbox">
-                  {({input, meta, placeholder}) => (
-                    <div className={meta.active ? "active" : ""}>
-                      <label>Nuts </label>
-                      <input {...input} placeholder={placeholder}/>
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-              </section>
-              <section className="fruits">
-                <Field name="apple" component="select" placeholder="username" type="checkbox" >
-                  {({input, meta, placeholder}) => (
-                    <div className={meta.active ? "active" : ""}>
-                      <label>Apple </label>
-                      <input {...input} placeholder={placeholder}/>
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-                <Field name="berry" component="input" placeholder="username" type="checkbox">
-                  {({input, meta, placeholder}) => (
-                    <div className={meta.active ? "active" : ""}>
-                      <label>Berry </label>
-                      <input {...input} placeholder={placeholder} />
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-                <Field name="melon" component="select" placeholder="username" type="checkbox">
-                  {({input, meta, placeholder}) => (
-                    <div className={meta.active ? "active" : ""}>
-                      <label>Melon </label>
-                      <input {...input} placeholder={placeholder}/>
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-              </section>
-              <section className="veg">
-                <Field name="carrot" component="select" placeholder="username" type="checkbox" >
-                  {({input, meta, placeholder}) => (
-                    <div className={meta.active ? "active" : ""}>
-                      <label>carrot </label>
-                      <input {...input} placeholder={placeholder}/>
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-                <Field name="kale" component="input" placeholder="username" type="checkbox">
-                  {({input, meta, placeholder}) => (
-                    <div className={meta.active ? "active" : ""}>
-                      <label>kale</label>
-                      <input {...input} placeholder={placeholder} />
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-                <Field name="aspragus" component="select" placeholder="username" type="checkbox">
-                  {({input, meta, placeholder}) => (
-                    <div className={meta.active ? "active" : ""}>
-                      <label>aspragus</label>
-                      <input {...input} placeholder={placeholder}/>
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-              </section>
-              <section className="dairy">
-                <Field name="almond milk" component="select" placeholder="username" type="checkbox" >
-                  {({input, meta, placeholder}) => (
-                    <div className={meta.active ? "active" : ""}>
-                      <label>almond milk </label>
-                      <input {...input} placeholder={placeholder}/>
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-                <Field name="oat milk" component="input" placeholder="username" type="checkbox">
-                  {({input, meta, placeholder}) => (
-                    <div className={meta.active ? "active" : ""}>
-                      <label>oat milk </label>
-                      <input {...input} placeholder={placeholder} />
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-                <Field name="coconut milk" component="select" placeholder="username" type="checkbox">
-                  {({input, meta, placeholder}) => (
-                    <div className={meta.active ? "active" : ""}>
-                      <label>coconut milk </label>
-                      <input {...input} placeholder={placeholder}/>
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-              </section>
-              <section className="fats">
-                <Field name="avacado" component="select" placeholder="username" type="checkbox" >
-                  {({input, meta, placeholder}) => (
-                    <div className={meta.active ? "active" : ""}>
-                      <label>avacado </label>
-                      <input {...input} placeholder={placeholder}/>
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-                <Field name="coconut oil" component="input" placeholder="username" type="checkbox">
-                  {({input, meta, placeholder}) => (
-                    <div className={meta.active ? "active" : ""}>
-                      <label>coconut oil </label>
-                      <input {...input} placeholder={placeholder} />
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-                <Field name="olive oil" component="select" placeholder="username" type="checkbox">
-                  {({input, meta, placeholder}) => (
-                    <div className={meta.active ? "active" : ""}>
-                      <label>olive oil </label>
-                      <input {...input} placeholder={placeholder}/>
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </div>
-                  )}
-                </Field>
-              </section>
-
-              <button type="submit" disable={submitting}>Submit</button>
-              <FormSpy subscription={{values:true}}>
-                {({values}) =>
-                  <prev>{JSON.stringify(values, undefined, 2)}{addItem(values)}</prev>
-                }
-              </FormSpy>
-            </form>
-          )}
-        </Form>
-        <div>
-
-        </div>
+        <label>First Name</label>
+        <input name="firstName" placeholder="First Name"/>
       </div>
     )
+  }
+}
 
+
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+const onSubmit = async values => {
+  await sleep(300)
+  window.alert(JSON.stringify(values, 0, 2))
+}
+
+class RecipeForm extends React.Component {
+  constructor() {
+    super()
+    const initialState = {}
+    let inConstructor = true
+    this.form = createForm({ onSubmit })
+
+    // subscribe to form changes
+    this.unsubscribe = this.form.subscribe(
+      formState => {
+        // cannot call setState in constructor, but need to on subsequent notifications
+        if (inConstructor) {
+          initialState.formState = formState
+        } else {
+          this.setState({ formState })
+        }
+        console.log(formState)
+        console.log(initialState)
+      },
+      { active: true, pristine: true, submitting: true, values: true }
+    )
+
+    // register fields
+    this.unsubscribeFields = ['firstName', 'lastName'].map(fieldName =>
+      this.form.registerField(
+        fieldName,
+        fieldState => {
+          // cannot call setState in constructor, but need to on subsequent notifications
+          if (inConstructor) {
+
+            initialState[fieldName] = fieldState
+          } else {
+            this.setState({ [fieldName]: fieldState })
+          }
+        },
+        { value: true }
+      )
+    )
+    this.state = initialState
+    inConstructor = false
+    console.log(inConstructor)
+  }
+
+  //creating a field component
+
+
+  componentWillUnmount() {
+    this.unsubscribe()
+    this.unsubscribeFields.forEach(unsubscribe => unsubscribe())
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+    this.form.submit()
+  }
+
+
+
+render() {
+console.log(this.state.formState)
+console.log(this.state)
+    const { formState, firstName, lastName } = this.state
+    return (
+      <React.Fragment>
+      <FieldComponents/>
+
+        <h1>🏁 Final Form - Simple React Example</h1>
+        <a href="https://github.com/erikras/final-form#-final-form">
+          Read Docs
+        </a>
+        <p>
+          This is primarily for educational purposes. If you are using React,
+          you should <em>probably</em> be using{' '}
+          <a href="https://github.com/erikras/react-final-form#-react-final-form">
+            🏁 React Final Form
+          </a>
+          .
+        </p>
+        <FieldComponents/>
+        <form onSubmit={this.handleSubmit}>
+          <div>
+
+            <label>First Name</label>
+            <input
+              name="firstName"
+              onBlur={() => firstName.blur() }
+              onChange={event =>
+                firstName.change(event.target.value || undefined)
+              }
+              onFocus={() => firstName.focus()}
+              value={firstName.value || ''}
+              placeholder="First Name"
+            />
+          </div>
+          <div>
+            <label>Last Name</label>
+            <input
+              name="firstName"
+              onBlur={() => lastName.blur()}
+              onChange={event =>
+                lastName.change(event.target.value || undefined)
+              }
+              onFocus={() => lastName.focus()}
+              value={lastName.value || ''}
+              placeholder="Last Name"
+            />
+          </div>
+          <div className="buttons">
+            <button type="submit" disabled={formState.submitting}>
+              Submit
+            </button>
+            <button
+              type="button"
+              onClick={() => this.form.reset()}
+              disabled={formState.submitting || formState.pristine}
+            >
+              Reset
+            </button>
+          </div>
+          <pre>{JSON.stringify(this.state, 0, 2)}</pre>
+        </form>
+      </React.Fragment>
+    )
+  }
 }
 
 export const selection = ["quinoa","apple","carrots","avacado"]
-export default Forming;
+export default RecipeForm;
