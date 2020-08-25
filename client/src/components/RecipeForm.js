@@ -31,7 +31,7 @@ const FormField = (props)=>{
      setIngredients(userSelection)
    }
 
-   const initialState= {};
+   const initialState = {};
    const form = createForm({onSubmit})
    let inConstructor = true;
    {/*Subscribe to formstate*/}
@@ -47,7 +47,7 @@ const FormField = (props)=>{
    )
    {/*Subscribe to fieldstate*/}
    let unsubscribeFields = []
-  
+
 
   return(
     <React.Fragment>
