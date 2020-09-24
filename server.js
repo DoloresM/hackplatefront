@@ -13,6 +13,6 @@ mongoose.connect(
   {useNewUrlParser: true}
 )
 
-app.listen(5000, ()=>{
-  console.log("Server running at port 5000")
+app.listen(3001, ()=>{
+  console.log("Server running at port 3001")
 })
