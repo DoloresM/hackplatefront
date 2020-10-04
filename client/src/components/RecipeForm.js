@@ -1,17 +1,15 @@
 import React, {useState,useEffect} from "react";
 import {Form, Field, FormSpy} from "react-final-form";
 import {createForm} from "final-form";
-import {ingredients,fruits, vegetables, soy, butter, dairyAlternative, meals, nutsAndSeeds, wholeGrains} from "../data";
 import {getList} from './ListFunctions'
-
 
 {/*FORM FIELD COMPONENT*/}
 const FormField = (props)=>{
   return(
-    <Field name={props.name} component="input" type="checkbox">
+    <Field name={props.item} component="input" type="checkbox">
       {({input, meta, placeholder}) => (
         <div className={meta.active ? "active" : ""}>
-          <label>{props.name}</label>
+          <label>{props.item}</label>
           <input {...input} placeholder={placeholder} />
           {meta.error && meta.touched && <span>{meta.error}</span>}
         </div>
@@ -20,161 +18,128 @@ const FormField = (props)=>{
   )
 }
 
+
 //*********************************************************************************
 
 {/*FORM COMPONENT*/}
  const RecipeForm = () =>{
 
    {/*SETTING STATE: FUNCTIONAL COMPONENT */}
-   {/*setting state selected ingredients*/}
-   const [recipeIngredients, setIngredients] = useState([]);
-   {/*setting state selected ingredients*/}
-   let [recipeI, setI] = useState({});
+   const [recipeIngredients, setRecipeIngredients] = useState([]);
    {/*setting state for returned meals */}
-   const [mealResults, setMeals] = useState({});
+   // const [mealResults, setMeals] = useState({});
 
-{/* useEffect(); instead of componentDidMount for importing the inital set of needed data: "getAll()"
-componentDidMount() {
-  this.getAll()
-}
-*/}
+  useEffect(() => {
+    getList().then(data => {
+      fillCategory(data)
+      console.log(data)
+      setRecipeIngredients(data)
+    })
+  },[])
 
-{/*implement this when the state of the component needs to change/ when the component needs to update
-componentDidUpdate(){
-}
-*/}
+ 
 
-useEffect(() => {
-  getAll();
-})
+  useEffect(()=>{
+    if(recipeIngredients.length > 1){
+      fillCategory()
+    } else{
+      console.log("needs to be rerendered")
+    } 
+  },[recipeIngredients])
 
-{/*  this.setState(
-    {
-      term: '',
-      items: [...data]
-    },
-    () => {
-      console.log(this.state.items)
-    }
-  )
-}) */}
 
-var x;
-const getAll = () => {
-  getList().then(data => {
-     x = data
-    setI(recipeI = data)
+
+  useEffect(()=>{
+    console.log("render");
   })
-  console.log(x)
+
+  console.log("rendering");
+
+let wholeGrain
+let nutsAndSeed
+let dairyAlternative
+let butter
+let soyProtein
+let vegetable 
+let fruit
+ const fillCategory = async (x)=>{
+    if(recipeIngredients.length){
+    wholeGrain = recipeIngredients.filter(x => x.category == "wholeGrains")
+    console.log(wholeGrain)
+    nutsAndSeed =  recipeIngredients.filter(x => x.category == "nutsAndSeeds")
+    console.log(nutsAndSeed)
+    dairyAlternative = recipeIngredients.filter(x => x.category == "dairyAlternative")
+    console.log(dairyAlternative)
+    butter = recipeIngredients.filter(x => x.category == "butters")
+    console.log(butter)
+    soyProtein = recipeIngredients.filter(x => x.category == "soyProtein")
+    console.log(soyProtein)
+    vegetable = recipeIngredients.filter(x => x.category == "vegetables")
+    console.log(vegetable)
+    fruit = recipeIngredients.filter(x => x.category == "fruits")
+    console.log(fruit)
+  }
+ console.log(wholeGrain)
+ 
+  return <h3></h3> 
 }
 
-
-
-{/*useEffect() also replaces componentDidUpdate . . . . . */}
-
+let yes =  wholeGrain ? wholeGrain[0].category : null
+//~~~~~~~~~~~DECONSTRUCTIG RECIPE CATEGORIES~~~~~~~~~~~~~~
+const deconstructRecipes = ()=>{
+  if(recipeIngredients.length){
+    recipeIngredients.map(ingredients =>{
+      return ingredients.category
+   })
+  }
+}
 
    {/*!!!!!!TODO UPDATING FORM FUNCTIONS!!!!!!!*/}
 
    {/*SUBMIT FUNCTION*/}
-   const onSubmit = (values)=>{
-     getAll()
-     window.alert(JSON.stringify(values,0,2))
-     console.log(values)
-     let userSelection = Object.keys(values)
-     {/*let ingredientState = [...userSelection, ...recipeIngredients]*/}
-     setIngredients(userSelection)
+    const onSubmit = (values)=>{
+      window.alert(JSON.stringify(values,0,2))
+      console.log(values)
+      let userSelection = Object.keys(values)
+      {/*let ingredientState = [...userSelection, ...recipeIngredients]*/}
+    }
 
-   }
+    {/*****CREATING FORM*****/}
+    const initialState = {};
+    const form = createForm({onSubmit})
+    let inConstructor = true;
 
-   {/*****CREATING FORM*****/}
-   const initialState = {};
-   const form = createForm({onSubmit})
-   let inConstructor = true;
-
-   {/*******SUBSCRIBE TO FORM STATE*******/}
-   let unsubscribe = form.subscribe(
-     formstate=>{
-       if(inConstructor){
-         initialState.formState = formstate
-       } else{
-         console.log("no formstate")
-       }
-     },
-     {active:true, pristine: true, submitting: true, values: true}
-   )
-
-
-   {/*******REACT RETURNS: FORM STRUCTURE ********/}
-   let unsubscribeFields = []
-   if(setI.length > 0){
-     return(
-
-      <React.Fragment>
-
-      {/*!!TODO: map "sections"!!*/}
-        <Form onSubmit={onSubmit} subscription={{submitting:true}}>
-        {({handleSubmit, submitting, values}) =>(
-
-          <form onSubmit = {handleSubmit}>
-            <section className="frutis">
-              <h3>Fruits</h3>
-              {fruits.map(f =>{
-                return <FormField name={f}/>
-              })}
-            </section>
-            <section className="vegetables">
-              <h3>Vegetables</h3>
-              {vegetables.map(f =>{
-                return <FormField name={f}/>
-              })}
-            </section>
-            <section className="soy">
-              <h3>Soy</h3>
-              {soy.map(f =>{
-                return <FormField name={f}/>
-              })}
-            </section>
-            <section className="butter">
-              <h3>Butter</h3>
-              {butter.map(f =>{
-                return <FormField name={f}/>
-              })}
-            </section>
-            <section className="dairyAlternative">
-              <h3>Dairy Alternative</h3>
-              {dairyAlternative.map(f =>{
-                return <FormField name={f}/>
-              })}
-            </section>
-            <section className="nutsAndSeeds">
-              <h3>Nuts and Seeds</h3>
-              {nutsAndSeeds.map(f =>{
-                return <FormField name={f}/>
-              })}
-            </section>
-            <section className="wholeGrains">
-              <h3>Whole Grains</h3>
-              {wholeGrains.map(f =>{
-                return <FormField name={f}/>
-              })}
-            </section>
-            <button  type="submit" disable={submitting}>Submit</button>
-            <FormSpy subscription={{values:true}}>
-              {({values}) =><prev>{JSON.stringify(values, undefined, 2)}</prev>}
-            </FormSpy>
-          </form>
-        )}
-      </Form>
-      <p>{recipeIngredients}</p>
-      </React.Fragment>
+    {/*******SUBSCRIBE TO FORM STATE*******/}
+    let unsubscribe = form.subscribe(
+      formstate=>{
+        if(inConstructor){
+          initialState.formState = formstate
+        } else{
+          console.log("no formstate")
+        }
+      },
+      {active:true, pristine: true, submitting: true, values: true}
     )
 
-  } else {
+  
+  
+      if(recipeIngredients.length ){
+    console.log(recipeIngredients)
     return(
-      <h1>Data is Needed</h1>
+      <React.Fragment>
+      <section className="frutis">
+          <h3>{wholeGrain[0]}</h3>       
+      </section>
+      </React.Fragment> 
     )
-  }
-
+  } else {
+    return <h1>need data</h1>
+  } 
 }
+
+
+
+
+
 
 export default RecipeForm

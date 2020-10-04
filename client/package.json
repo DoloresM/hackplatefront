@@ -1,6 +1,6 @@
 {
   "name": "hackmyplate",
-  "proxy": "http://192.168.1.5l:5000",
+  "proxy": "http://localhost:3001",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -1,13 +1,23 @@
 import axios from 'axios'
-var x;
+
 export const getList = () => {
   return axios
     .get('/search', {
       headers: { 'Content-Type': 'application/json' }
     })
     .then(res => {
-      var x = res.data
-      return x
+      return res.data
     })
-    console.log(x)
 }
+
+
+// export const getList = () => {
+//   return axios
+//     .get('/search?item=apple', {
+//       headers: { 'Content-Type': 'application/json' }
+//     })
+//     .then(res => {
+//       console.log(res.datal);
+//       return res.data
+//     })
+// }
