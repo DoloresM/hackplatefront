@@ -6,6 +6,8 @@ import Nav from "./Nav";
 import Plate from "./Plate";
 import Footer from "./Footer"
 
+//TODO: 
+
 const Guide = ()=>{
   return(
     <GuideWrapper>

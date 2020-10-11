@@ -10,4 +10,4 @@ const MealSchema = new Schema({
   }
 })
 
-module.exports = Meal = mongoose.model("food", IngredientSchema)
+module.exports = Meal = mongoose.model("meal", MealSchema)
